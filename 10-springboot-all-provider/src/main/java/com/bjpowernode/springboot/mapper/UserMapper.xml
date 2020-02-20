@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjpowernode.springboot.mapper.UserMapper">
+
+  <resultMap id="BaseResultMap" type="com.bjpowernode.springboot.model.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="nick" jdbcType="VARCHAR" property="nick" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, nick, phone, address, email
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from u_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <!--分异查询-->
+    <select id="selectUserByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from u_user
+      limit #{startRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+    <!--查询总数-->
+    <select id="selectUserByTotal" resultType="java.lang.Integer">
+      select
+      count(*)
+      from u_user
+    </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from u_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.bjpowernode.springboot.model.User">
+    insert into u_user (id, nick, phone, 
+      address, email)
+    values (#{id,jdbcType=INTEGER}, #{nick,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.bjpowernode.springboot.model.User">
+    insert into u_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="nick != null">
+        nick,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nick != null">
+        #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjpowernode.springboot.model.User">
+    update u_user
+    <set>
+      <if test="nick != null">
+        nick = #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjpowernode.springboot.model.User">
+    update u_user
+    set nick = #{nick,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

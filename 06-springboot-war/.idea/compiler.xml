@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="07-springboot-jar" />
+        <module name="06-springboot-war" />
+        <module name="08-springboot-thymeleaf" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="06-springboot-war" target="1.8" />
+      <module name="07-springboot-jar" target="1.8" />
+      <module name="08-springboot-thymeleaf" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="06-springboot-war" options="-parameters" />
+      <module name="07-springboot-jar" options="-parameters" />
+      <module name="08-springboot-thymeleaf" options="-parameters" />
+    </option>
+  </component>
+</project>

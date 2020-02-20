@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/02-springboot-web/02-spingboot-web.iml" filepath="$PROJECT_DIR$/02-springboot-web/02-spingboot-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03-springboot-mybatis/03-springboot-mybatis.iml" filepath="$PROJECT_DIR$/03-springboot-mybatis/03-springboot-mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04-springboot-dubbo-comsumer/04-springboot-dubbo-comsumer.iml" filepath="$PROJECT_DIR$/04-springboot-dubbo-comsumer/04-springboot-dubbo-comsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_springboot_dubbo_interface/04-springboot-dubbo-interface.iml" filepath="$PROJECT_DIR$/04_springboot_dubbo_interface/04-springboot-dubbo-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04-springboot-dubbo-privader/04-springboot-dubbo-privader.iml" filepath="$PROJECT_DIR$/04-springboot-dubbo-privader/04-springboot-dubbo-privader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-springboot-java/05-springboot-java.iml" filepath="$PROJECT_DIR$/05-springboot-java/05-springboot-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-springboot-war/06-springboot-war.iml" filepath="$PROJECT_DIR$/06-springboot-war/06-springboot-war.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07-springboot-jar/07-springboot-jar.iml" filepath="$PROJECT_DIR$/07-springboot-jar/07-springboot-jar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08-springboot-thymeleaf/08-springboot-thymeleaf.iml" filepath="$PROJECT_DIR$/08-springboot-thymeleaf/08-springboot-thymeleaf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09-springboot-all-interface/09-springboot-all-interface.iml" filepath="$PROJECT_DIR$/09-springboot-all-interface/09-springboot-all-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10-springboot-all-consumer/10-springboot-all-consumer.iml" filepath="$PROJECT_DIR$/10-springboot-all-consumer/10-springboot-all-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10-springboot-all-provider/10-springboot-all-provider.iml" filepath="$PROJECT_DIR$/10-springboot-all-provider/10-springboot-all-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/springboot.iml" filepath="$PROJECT_DIR$/.idea/springboot.iml" />
+    </modules>
+  </component>
+</project>

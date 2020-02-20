@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- 数据库驱动-->
+    <!--指定连接数据库的JDBC驱动包所在位置，指定到本机完整路径-->
+    <!--<classPathEntry location="mysql-connector-java-5.1.25-bin.jar"/>-->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!--抑制生成注解，由于生成的注解都是英文的，可以不让它生成-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库连接信息-->
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/springdb"
+                        userId="root"
+                        password="mysql">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成模型的包名和位置-->
+        <!--生成model类，targetPackage指定model类的包名，targetProject指定生成model放在哪个工程下面-->
+        <javaModelGenerator targetPackage="${targetModelPackage}"
+                            targetProject="${targetJavaProject}">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成映射文件的包名和位置-->
+        <!--生成MyBatis的Mapper.xml文件，targetPackage指定Mapper.xml存储的包名，targetProject指定生成的Mapper.xml放在那里-->
+        <sqlMapGenerator targetPackage="com.bipowernode.springboot.mapper"
+                         targetProject="${targetJavaProject}">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+
+
+        <!-- 生成DAO的包名和位置-->
+        <!--生成MyBatis的Mapper接口类文件，targetPackage指定Mapper接口类的包名，targetProject指定生成的Mapper接口类放在那里-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${targetMapperPackage}"
+                             targetProject="${targetJavaProject}">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+        <table tableName="student"
+               domainObjectName="Student"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+
+</generatorConfiguration>

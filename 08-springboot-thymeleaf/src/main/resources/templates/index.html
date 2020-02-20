@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<p>-------------------------------------------------------------------</p>
+<p th:text="${msg}">123456</p>
+<div th:text="${msg}">123456</div>
+<span th:text="${msg}">123456</span>
+<p>-------------------------------------------------------------------</p>
+<p>
+    <span th:text="${user.nick}">132</span>
+    <span th:text="${user.id}">132</span>
+    <span th:text="${user.adress}">132</span>
+    <span th:text="${user.email}">132</span>
+    <span th:text="${user.phone}">132</span>
+</p>
+<p>----------------------------th:object---------------------------------------</p>
+<div th:object="${user}">
+    <span th:text="*{nick}">132</span>
+    <span th:text="*{id}">132</span>
+    <span th:text="*{adress}">132</span>
+    <span th:text="*{email}">132</span>
+    <span th:text="*{phone}">132</span>
+</div>
+<p>------------------------------th:text-------------------------------------</p>
+<p>
+    <span>nick:<span th:text="*{user.nick}">132</span></span>
+    <span>id:<span th:text="*{user.id}">132</span></span>
+    <span>adreass:<span th:text="*{user.adress}">132</span></span>
+    <span>email:<span th:text="*{user.email}">132</span></span>
+    <span>phone:<span th:text="*{user.phone}">132</span></span>
+</p>
+<p>-----------------------------th:href--------------------------------------</p>
+<a href="http://localhost:8080/boot/user/info?id=100">查看</a>
+<a href="info.html" th:href="@{'http://localhost:8080/boot/user/info?id='+${user.id}}">查看</a>
+<!--<a href="info.html" th:href="@{|http://localhost:8080/boot/user/info?id=${user.id}&phone=${user.id}|}">查看</a>-->
+<p>--------------------------th:href-----------------------------------------</p>
+<!--/user/info自动补全项目本身路径-->
+<a href="info.html" th:href="@{'user/info?id='+${user.id}}">查看</a>
+<a href="info.html" th:href="@{'/user/info?id='+${user.id}}">查看</a>
+
+<p>-------------------------------th:action------------------------------------</p>
+<!--地址是变量，和url配合使用-->
+<form id="login" th:action="@{/boot/login}">
+    ''''''
+</form>
+
+<form id="login1" action="/boot/login">
+    ''''''
+</form>
+
+<p>------------------------------th:each list-------------------------------------</p>
+<p th:each="user:${userList}">
+    <!--${userStat.count}拿到属性序号-->
+    <span th:text="${userStat.count}">132</span>
+    <span th:text="${user.nick}">132</span>
+    <span th:text="${user.id}">132</span>
+    <span th:text="${user.adress}">132</span>
+    <span th:text="${user.email}">132</span>
+    <span th:text="${user.phone}">132</span>
+</p>
+
+<p>----------------------------th:each Map---------------------------------------</p>
+<p th:each="userMapval:${userMap}">
+    <!--${userStat.count}拿到属性序号-->
+    <span th:text="${userMapval.key}">132</span>
+    <span th:text="${userMapval.value.nick}">132</span>
+    <span th:text="${userMapval.value.id}">132</span>
+    <span th:text="${userMapval.value.adress}">132</span>
+    <span th:text="${userMapval.value.email}">132</span>
+    <span th:text="${userMapval.value.phone}">132</span>
+</p>
+
+
+<p>---------------------------th:each数组----------------------------------------</p>
+<p th:each="userArray:${userArray}">
+    <!--${userStat.count}拿到属性序号-->
+<!--    <span th:text="${userArray.key}">132</span>-->
+    <span th:text="${userArray.nick}">132</span>
+    <span th:text="${userArray.id}">132</span>
+    <span th:text="${userArray.adress}">132</span>
+    <span th:text="${userArray.email}">132</span>
+    <span th:text="${userArray.phone}">132</span>
+</p>
+<p>-------------------------------------------------------------------</p>
+<span id="123">qqq</span>
+<span th:id="${username}">qqqq</span>
+<p>----------------------------th:if---------------------------------------</p>
+<span th:if="${sex eq '1'}">
+    男
+</span>
+<span th:if="${sex eq '2'}">
+    女
+</span>
+
+<p>-----------------------------th:unless--------------------------------------</p>
+<span th:unless="${sex eq '1'}">
+    男
+</span>
+<span th:unless="${sex eq '2'}">
+    女
+</span>
+
+<p>-----------------------------th:switch/th:case--------------------------------------</p>
+<div th:switch="${sex}">
+    <p th:case="1">性别：男</p>
+    <p th:case="2">性别：女</p>
+    <p th:case="*">性别：未知</p>
+
+</div>
+<p>-----------------------------th:src--------------------------------------</p>
+<script src="../static/js/jquery-3.4.1.min.js" th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+<script src="../static/js/123.js" th:src="@{/js/123.js}"></script>
+<img src="../static/image/0.jpg" th:src="@{/image/0.jpg}"/>
+<p>-----------------------------th:text--------------------------------------</p>
+<!--th:text="${user.nick},在框外-->
+<input type="text" id="nick" name="nick" th:text="${user.nick}">
+<p>-----------------------------th:value--------------------------------------</p>
+<input type="text" id="phone" name="phone" th:value="${user.phone}">
+<p>-----------------------------th:attr--------------------------------------</p>
+<input type="text" id="phone1" name="phone1" th:attr="value='user.phone'" >
+<input type="text" id="phone2" name="phone2" th:attr="value=${user.phone}" >
+<p>-----------------------------th:onclick--------------------------------------</p>
+<input type="text" id="phone3" name="phone1" th:attr="value='user.phone'" th:onclick="'clickme()'">
+<script>
+    function clickme(){
+        alert("clickme");
+
+    }
+</script>
+<p>-----------------------------th:style--------------------------------------</p>
+<div th:style="'display:none;'">
+123456789
+</div>
+<p>-----------------------------th:inline--------------------------------------</p>
+<p>-----------------------------内联文本--------------------------------------</p>
+<div th:text="${user.nick}">123465</div>
+<div th:inline="text">132[[${user.nick}]]</div>
+<div th:inline="none">132[[${user.nick}]]</div>
+<div>132[[${user.nick}]]</div>
+<p>-----------------------------内联脚本--------------------------------------</p>
+<script th:inline="javascript" type="text/javascript">
+    var user= [[${user.nick}]];
+    alert(user)
+</script>
+<div th:inline="javascript">132[[${user.nick}]]</div>
+
+
+<p>-----------------------------数字字面量--------------------------------------</p>
+<!--数字的位数必须一致-->
+<p>今年是<span th:text="2017+3">1234</span>年</p>
+<p>今年是<span th:text="2017">1949</span>年</p>
+<p>20年后, 将是<span th:text="2017 + 20">1969</span>年</p>
+<p>-----------------------------boolean字面量--------------------------------------</p>
+<p th:if="${isFlag} == true">
+    false在花括号外面，解析识别由Thymleaf自身完成
+</p>
+
+
+<p>-----------------------------boolean字面量--------------------------------------</p>
+<p th:if="${userlist == null}">
+    userlist不为空
+</p>
+
+<p>-----------------------------字符串拼接--------------------------------------</p>
+<a href="#" th:text="'第'+${sex}+'页 ,共'+${sex}+'页'"></a>
+<a href="#" th:text="'第'+${sex}+'页，供'+${sex}+'页'"></a>
+<!--不同之处在于将''去掉，两边加||，在||中间可以写thymeleaf东西-->
+<a href="#" th:text="|第${sex}页,共${sex}页|"></a>
+
+<p>-----------------------------字符串拼接--------------------------------------</p>
+<span th:text="${sex eq '1'}?'男':'女'">未知</span>
+
+<p>-----------------------------request拼接--------------------------------------</p>
+
+<span th:text="${#request.getAttribute('name')}">name</span>
+
+
+<p>-----------------------------session--------------------------------------</p>
+
+<span th:text="${#session.getAttribute('phone')}">name</span>
+
+<span th:inline="text">
+[[${#session.id}]]我
+[[${#session.lastAccessedTime}]]
+</span>
+<p>-----------------------------格式化日期--------------------------------------</p>
+<span th:text="${#dates.format(date,'yyyy-mm-dd hh:mm:ss')}"></span>
+<p>-----------------------------截取字符串--------------------------------------</p>
+<span th:text="${#strings.substring(str,0,10)}"></span>
+
+<p>-----------------------------th:methed--------------------------------------</p>
+<form th:action="@{/login}" th:method="'post'">132879546</form>
+
+<form th:id="'123''" th:action="@{/login}" th:method="'post'">132879546</form>
+
+
+</body>
+</html>
