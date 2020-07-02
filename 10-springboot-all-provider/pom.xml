@@ -93,7 +93,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.13</version>
+            <version>8.0.16</version>
         </dependency>
     </dependencies>
 
@@ -117,7 +117,7 @@
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
                         <!--只能使用5.1.30版本，其他版本报错-->
-                        <version>5.1.30</version>
+                        <version>8.0.16</version>
                         <scope>runtime</scope>
                     </dependency>
 
